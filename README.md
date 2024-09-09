@@ -1,2 +1,2 @@
-# JavaScript-Practice
-This repository for javascript practice
+# JavaScript-PolyFills
+This repository is giving you the solution for the polyFills which is asked in interview
