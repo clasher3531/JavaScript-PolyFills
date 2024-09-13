@@ -1,7 +1,7 @@
 # JavaScript-PolyFills
 List of Polyfills asked in interview
 
-##Array
+## Array
 
 1. Map
 2. Filter
