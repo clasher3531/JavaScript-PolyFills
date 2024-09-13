@@ -1,11 +1,19 @@
 // Polyfill Promise.allSettled
 
 const promise1 = new Promise((resolve, reject) => {
-    setTimeout(resolve('foo1'), 5000);
-  });
-const promise2 = 42;
+    setTimeout(function() {
+        resolve('foo1')
+    }, 1000);
+});
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(function() {
+      resolve('foo2')
+    }, 50);
+});
 const promise3 = new Promise((resolve, reject) => {
-  setTimeout(reject('foo3'), 100);
+  setTimeout(function() {
+    reject('foo3')
+  }, 100);
 });
 
 Promise.myAllSettled = function(promises) {
