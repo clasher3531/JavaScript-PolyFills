@@ -1,11 +1,19 @@
 // Polyfill Promise.all
 
 const promise1 = new Promise((resolve, reject) => {
-    setTimeout(resolve('foo1'), 5000);
-  });
-const promise2 = 42;
+    setTimeout(function() {
+        resolve('foo1')
+    }, 1000);
+});
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(function() {
+      resolve('foo2')
+    }, 50);
+});
 const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve('foo3'), 100);
+  setTimeout(function() {
+    resolve('foo3')
+  }, 100);
 });
 
 Promise.myAll = function(promises) {
@@ -45,7 +53,7 @@ iterableMap.set('promise3', promise3);
 
 var resultArray = Promise.myAll(iterableArray);
 var resultSet = Promise.myAll(iterableSet);
-var resultMap = Promise.all(iterableMap.values());
+var resultMap = Promise.myAll(iterableMap.values());
 
 resultArray.then(function(values) {
     console.log(values);
