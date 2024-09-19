@@ -10,19 +10,29 @@ const getData = function(arg1, arg2) {
     console.log('request', request);
 }
 
-const throttle = function(callback, delay, ...args) {
-    let timeoutId;
-    return function() {
-        if (timeoutId === null || typeof timeoutId === 'undefined') {
-            if (typeof timeoutId === 'undefined') {
-                callback.apply(this, args);
-            }
-            timeoutId = setTimeout(function() {
-                timeoutId = null;
-                callback.apply(this, args);
-            }, delay)
-        }
-    }
+const throttle = function(callback, delay) {
+    let timeoutId = null;
+    let lastArguments = null;
+    let lastThis = null;
+
+     return (...args) => {
+       if (timeoutId) {
+         lastArguments = args;
+         lastThis = this;
+       } else {
+         func.apply(this, args);
+    
+         timeoutId = setTimeout(() => {
+           if (lastArguments) {
+             func.apply(lastThis, lastArguments);
+    
+             timeoutId = null;
+             lastArguments = null;
+             lastThis = null;
+           }
+         }, wait);
+       }
+     };
 }
 
 throttle_button.addEventListener('click', throttle(getData, 2000, 'arg1', 'arg2'));
