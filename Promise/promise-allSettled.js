@@ -18,6 +18,9 @@ const promise3 = new Promise((resolve, reject) => {
 
 Promise.myAllSettled = function(promises) {
     var promiseArray = Array.isArray(promises) ? promises : Array.from(promises);
+    if (promiseArray.length === 0) {
+        return Promise.resolve(promiseArray);
+    }
     var result = new Array(promiseArray.length);
     var promiseSettled = 0;
     return new Promise(function(resolve, reject) {
