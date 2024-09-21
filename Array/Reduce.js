@@ -27,5 +27,4 @@ const reducer = (a, b, c, d) => {
 };
 
 console.log(arr.myReduce(reducer, []));
-console.log(arr.reduce(reducer, []));
 console.log(arr.myReduce(reducer));
