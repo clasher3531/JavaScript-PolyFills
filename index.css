@@ -1,0 +1,18 @@
+.card {
+    width: 30%;
+    height: 50px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    opacity: 0;
+}
+
+.card.show {
+    opacity: 1;
+}
+
+.card.shimmer {
+    background-color: lightgrey;
+    border: none;
+}
