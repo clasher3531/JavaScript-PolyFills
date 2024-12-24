@@ -13,7 +13,9 @@ Array.prototype.myFlat = function(depth) {
             if (Array.isArray(arr[i]) && depth > 0) {
                 flatterned(arr[i], depth - 1);
             } else {
-                result.push(arr[i]);
+                if (i in arr) {
+                     result.push(arr[i]);   
+                }
             }
         }
     }
